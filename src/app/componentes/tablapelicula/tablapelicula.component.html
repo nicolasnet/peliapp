@@ -1,0 +1,12 @@
+<div class="jumbotron">
+  <div class="container">
+      <h2>Tabla Pelicula</h2>
+      <br>
+      <ul>
+        <li *ngFor= "let pelicula of listadoTabla">
+            <span>{{pelicula.nombre}}</span>
+            <button (click)="SeSeleccionoPelicula(pelicula)" class="btn btn-info" > Enviar</button>
+        </li>
+      </ul>
+  </div>
+</div>
