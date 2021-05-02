@@ -1,10 +1,11 @@
 
-
+<div *ngIf='peliculaParaMostrar' >
     <h2>Detalle Pelicula</h2>
-    <p>{{peliculaParaMostrar.nombre}}</p>
     <p>{{peliculaParaMostrar.id}}</p>
+    <p>{{peliculaParaMostrar.nombre}}</p>    
     <p>{{peliculaParaMostrar.tipo}}</p>
     <p>{{peliculaParaMostrar.fechaDeEstreno}}</p>
-    <img src="{{peliculaParaMostrar.fotoDePelicula}}">
-
-<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+    <img *ngIf="peliculaParaMostrar" src="{{peliculaParaMostrar.fotoDePelicula}}" class="foto">
+</div>
+<!-- 
+<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->

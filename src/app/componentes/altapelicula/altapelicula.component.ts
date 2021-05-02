@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pelicula } from 'src/app/clases/pelicula';
 
 @Component({
@@ -11,7 +12,7 @@ export class AltapeliculaComponent implements OnInit {
   peliculaNueva: Pelicula;
   @Output() eventoCreacionNuevaPelicula: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() { }
+  constructor(private ruta: Router) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +24,9 @@ export class AltapeliculaComponent implements OnInit {
   }
 
   HacerNuevaPelicula(){
-    this.peliculaNueva = new Pelicula;
+
+    this.ruta.navigate(['altapelicula']);
+    // this.peliculaNueva = new Pelicula;
   }
 
 }

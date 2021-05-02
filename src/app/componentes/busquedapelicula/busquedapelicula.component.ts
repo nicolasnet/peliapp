@@ -9,6 +9,7 @@ import { Pelicula } from 'src/app/clases/pelicula';
 export class BusquedapeliculaComponent implements OnInit {
 
   listadoPeliculas: Pelicula[];
+  
   peliculaSeleccionada: Pelicula;
 
   constructor() {
@@ -26,6 +27,8 @@ export class BusquedapeliculaComponent implements OnInit {
     this.peliculaSeleccionada = pelicula;
     console.log(pelicula);
   }
+
+
 
   CargarNuevaPelicula(pelicula: Pelicula){
     this.listadoPeliculas.push(pelicula);

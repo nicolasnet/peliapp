@@ -2,8 +2,11 @@ export class Actor {
     nombre: string;
     apellido: string;
     email: string;
+    fechaNacimiento: Date;
     pais: object;
-    direccion: string;
-    
+
+    // constructor(nombre?: string, apellido?: string, email?:string, fechaNacimiento?: Date, pais?: object ){
+
+    // }
 
 }

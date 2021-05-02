@@ -26,8 +26,7 @@ export class ListadopaisesComponent implements OnInit {
   }
 
   seleccionPais(pais:object){
-    console.log(pais);
-    this.traerDatos();
+    // this.traerDatos();
     this.eventPaisSeleccionado.emit(pais);
   }
 
@@ -39,7 +38,7 @@ export class ListadopaisesComponent implements OnInit {
     // console.log(this.miServicio.getPaisActual());
     
     this.miServicio.getTodosLosPaises().subscribe(resultado => {
-      console.log(resultado);
+      
     }, error  =>{
       console.log('hubo un error: '+ error);
       

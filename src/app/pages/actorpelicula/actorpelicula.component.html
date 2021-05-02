@@ -1,0 +1,37 @@
+<br><br><br>
+<main role="main">
+
+    <app-listado-actores (eventActorSeleccionado)="CargarActorSeleccionado($event)"></app-listado-actores>
+    <!-- <app-tablapelicula (eventPeliculaSeleccionada)="CargarPeliculaSeleccionada($event)" [listadoTabla]="listadoPeliculas" ></app-tablapelicula> -->
+    
+  
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+            <app-tablapeliculas-actor [actorParaMostrar]="actorSeleccionado"></app-tablapeliculas-actor>
+          <!-- <app-altapelicula (eventoCreacionNuevaPelicula)="CargarNuevaPelicula($event)"></app-altapelicula> -->
+        </div>
+  
+        <div class="col-md-4">
+            <app-detallepais [actorParaMostrar]="actorSeleccionado"></app-detallepais>
+          <!-- <app-detallepelicula [peliculaParaMostrar]="peliculaSeleccionada" ></app-detallepelicula> -->
+        </div>
+        
+  
+        <div class="col-md-4">
+            <app-detalleactor [actorParaMostrar]="actorSeleccionado"></app-detalleactor>
+        </div>
+
+      </div>
+  
+      <hr>
+  
+    </div> <!-- /container -->
+  
+  </main>
+  
+  <footer class="container">
+    <p>&copy; Company 2017-2018</p>
+  </footer>
+  

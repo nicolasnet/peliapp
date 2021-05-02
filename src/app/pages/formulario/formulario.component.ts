@@ -16,7 +16,6 @@ export class FormularioComponent implements OnInit {
 
   CargarPaisSeleccionado(pais: object){
     this.paisSeleccionado = pais;
-    console.log(pais);
   }
 
 

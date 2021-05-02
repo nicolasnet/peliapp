@@ -1,22 +1,20 @@
-<form class="needs-validation" novalidate>
+<div class="container">
+<form class="needs-validation" novalidate [formGroup]="forma" (ngSubmit)="nuevoActor()">
   <div class="row">
     <div class="col-md-6 mb-3">
-      <label for="firstName">Nombre</label>
-      <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-      <div class="invalid-feedback">
-        Valid first name is required.
-      </div>
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre" formControlName="nombre">
+      <small class="invalid" *ngIf="forma.get('nombre').errors?.required && forma.get('nombre').touched">El nombre es requerido</small>
+      <small class="invalid" *ngIf="forma.get('nombre').errors?.contieneEspacios && forma.get('nombre').touched">El nombre no puede tener espacios</small>
     </div>
     <div class="col-md-6 mb-3">
-      <label for="lastName">Apellido</label>
-      <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-      <div class="invalid-feedback">
-        Valid last name is required.
-      </div>
+      <label for="apellido" class="form-label">Apellido</label>
+      <input type="text" class="form-control" id="apellido" placeholder="Ingrese apellido" formControlName="apellido">
+      <small class="invalid" *ngIf="forma.get('apellido').errors?.required && forma.get('apellido').touched">El apellido es requerido</small>
     </div>
   </div>
 
-  <div class="mb-3">
+  <!-- <div class="mb-3">
     <label for="username">Usuario</label>
     <div class="input-group">
       <div class="input-group-prepend">
@@ -27,34 +25,33 @@
         Your username is required.
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="mb-3">
     <label for="email">Email <span class="text-muted">(Optional)</span></label>
-    <input type="email" class="form-control" id="email" placeholder="you@example.com">
-    <div class="invalid-feedback">
-      Please enter a valid email address for shipping updates.
-    </div>
+    <input type="email" class="form-control" id="email" placeholder="you@example.com" formControlName="email">
+    <small class="invalid" *ngIf="forma.get('email').errors?.required && forma.get('email').touched">El email es requerido</small>
+    <small class="invalid" *ngIf="forma.get('email').errors?.email && forma.get('email').touched">El formato es invalido</small>
   </div>
 
   <div class="mb-3">
-    <label for="address">Direccion</label>
-    <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-    <div class="invalid-feedback">
-      Please enter your shipping address.
-    </div>
+    <label for="direccion">Fecha de Nacimiento</label>
+    <input type="date" class="form-control" id="fechaNacimiento" placeholder="Av. Mitre 650" formControlName="fechaNacimiento">
+    <small class="invalid" *ngIf="forma.get('fechaNacimiento').errors?.required && forma.get('fechaNacimiento').touched">La fecha de nacimiento es requerida</small>
   </div>
 
   <div class="row">
     <div class="col-md-5 mb-3">
-      <label for="country">Pais</label>
-      <input type="text" class="form-control" id="pais" placeholder="Seleccionar pais del listado" value="{{paisParaMostrar['name']}}" required>
-      <div class="invalid-feedback">
-        Please select a valid country.
-      </div>
+      <label for="pais">Pais</label>
+      <input type="text" *ngIf="paisParaMostrar" class="form-control" id="pais" value="{{paisParaMostrar['name']}}" disabled>
+      <!-- <small class="invalid" *ngIf="forma.get('pais').errors?.required">La dirección es requerida</small> -->
+      <input type="text" *ngIf="!paisParaMostrar" class="form-control" placeholder="Seleccionar pais del listado" disabled>
+      
     </div>
 
-    <div class="col-md-4 mb-3">
+    
+
+    <!-- <div class="col-md-4 mb-3">
       <label for="state">Provincia</label>
       <select class="custom-select d-block w-100" id="state" required>
         <option value="">Choose...</option>
@@ -63,24 +60,31 @@
       <div class="invalid-feedback">
         Please provide a valid state.
       </div>
-    </div>
-    <div class="col-md-3 mb-3">
+    </div> -->
+    <!-- <div class="col-md-3 mb-3">
       <label for="zip">Codigo Postal</label>
       <input type="text" class="form-control" id="zip" placeholder="" required>
       <div class="invalid-feedback">
         Codigo postal required.
       </div>
-    </div>
+    </div> -->
+
   </div>
-  <hr class="mb-4">
-  
+
+
+<!-- 
+  <hr class="mb-4"> -->
+<!--   
   <div class="custom-control custom-checkbox">
     <input type="checkbox" class="custom-control-input" id="save-info">
     <label class="custom-control-label" for="save-info">Save this information for next time</label>
-  </div>
-  <hr class="mb-4">
+  </div> -->
 
-  <h4 class="mb-3">Payment</h4>
+
+
+  <!-- <hr class="mb-4"> -->
+
+  <!-- <h4 class="mb-3">Payment</h4>
 
   <div class="d-block my-3">
     <div class="custom-control custom-radio">
@@ -128,7 +132,8 @@
         Security code required
       </div>
     </div>
-  </div>
+  </div> -->
   <hr class="mb-4">
-  <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+  <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="forma.invalid">Dar el alta</button>
 </form>
+</div>

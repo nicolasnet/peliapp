@@ -1,0 +1,19 @@
+<div class="jumbotron" *ngIf='pelisDelActor()'>
+    <div class="container">
+        <h2>Peliculas</h2>
+        <br>
+        <div>
+        <ul class="list-group mb-3 card-body overflow-auto" style="height: 300px;" #scrollMe  [scrollTop]="scrollMe">
+          <li type="text" class="list-group-item d-flex justify-content-between lh-condensed elegido" *ngFor="let pelicula of peliculasDelActor" (click)="SeSeleccionoPelicula(pelicula)">
+              <div>
+                  <h6 class="my-0">{{pelicula.nombre}}</h6>
+                  
+                  <!-- <small class="text-muted">{{pais.region}}</small> -->
+              </div>
+              <!-- <img src="{{pais.flag}}" class="bandera" > -->
+          </li>
+        </ul>
+      </div>
+  
+    </div>
+  </div>

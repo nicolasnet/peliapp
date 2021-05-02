@@ -1,0 +1,64 @@
+<div class="container">
+    <form class="needs-validation" novalidate [formGroup]="forma" (ngSubmit)="nuevaPelicula()">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre" formControlName="nombre">
+          <small class="invalid" *ngIf="forma.get('nombre').errors?.required && forma.get('nombre').touched">El nombre es requerido</small>
+          <small class="invalid" *ngIf="forma.get('nombre').errors?.contieneEspacios && forma.get('nombre').touched">El nombre no puede tener espacios</small>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="tipo" class="form-label">Tipo de pelicula</label>
+          <input type="text" class="form-control" id="tipo" placeholder="Ingrese tipo de pelicula" formControlName="tipo">
+          <small class="invalid" *ngIf="forma.get('tipo').errors?.required && forma.get('tipo').touched">El tipo es requerido</small>
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="fechaDeEstreno">Fecha de Estreno</label>
+          <input type="date" class="form-control" id="fechaDeEstreno" placeholder="Av. Mitre 650" formControlName="fechaDeEstreno">
+          <small class="invalid" *ngIf="forma.get('fechaDeEstreno').errors?.required && forma.get('fechaDeEstreno').touched">La fecha de nacimiento es requerida</small>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="cantidadPublico">Cantidad de Publico</label>
+          <input type="number" class="form-control" id="cantidadPublico" placeholder="0" formControlName="cantidadPublico">
+          <small class="invalid" *ngIf="forma.get('cantidadPublico').errors?.required && forma.get('cantidadPublico').touched">La cantidad es requerida</small>
+        </div>
+      </div>
+    
+      <div class="mb-3">
+        <label for="foto">Foto pelicula <span class="text-muted">(pegar URL)</span></label>
+        <input type="text" class="form-control" id="foto" placeholder="Ingrese foto de pelicula" formControlName="foto">
+        <small class="invalid" *ngIf="forma.get('foto').errors?.required && forma.get('foto').touched">La foto es requerida</small>
+        
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6 mb-3" >
+          <label for="actor">Actores seleccionados de la tabla:</label>
+          <!-- <input type="text" *ngIf="actorParaMostrar" class="form-control" id="actor" value="{{actorParaMostrar.nombre}}" disabled> -->
+          <!-- <input type="text" *ngIf="actorParaMostrar" class="form-control" placeholder="Seleccionar actor del listado" disabled> -->
+          
+        </div>
+
+        <ul class="list-group mb-3 card-body overflow-auto" style="height: 110px;" #scrollMe  [scrollTop]="scrollMe">
+          <li type="text" class="list-group-item d-flex justify-content-between lh-condensed elegido" *ngFor="let actor of actorParaMostrar" disable>
+              
+                <input type="text" class="form-control" value="{{actor.apellido}} {{actor.nombre}}" disabled>
+                  <!-- <h6 class="my-0">{{actor.apellido}} {{actor.nombre}}</h6> -->
+                  
+                  <!-- <small class="text-muted">{{pais.region}}</small> -->
+              
+              <!-- <img src="{{pais.flag}}" class="bandera" > -->
+          </li>
+        </ul>
+
+
+      </div>
+    
+      <hr class="mb-4">
+      <button class="btn btn-primary btn-lg btn-block" type="submit"  [disabled]="forma.invalid">Dar el alta</button>
+    </form>
+    </div>

@@ -15,6 +15,18 @@ import { ListadopaisesComponent } from './pages/listadopaises/listadopaises.comp
 import { HttpClientModule } from '@angular/common/http';
 import { ServiciopaisesService } from './servicios/serviciopaises.service';
 import { FormularioComponent } from './pages/formulario/formulario.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { FormularioPeliculaComponent } from './componentes/formulario-pelicula/formulario-pelicula.component';
+import { ListadoActoresComponent } from './componentes/listado-actores/listado-actores.component';
+import { CrearPeliculaComponent } from './componentes/crear-pelicula/crear-pelicula.component';
+import { ActorpeliculaComponent } from './pages/actorpelicula/actorpelicula.component';
+import { DetallepaisComponent } from './pages/detallepais/detallepais.component';
+import { DetalleactorComponent } from './pages/detalleactor/detalleactor.component';
+import { TablapeliculasActorComponent } from './pages/tablapeliculas-actor/tablapeliculas-actor.component';
+import { ErrorComponent } from './componentes/error/error.component'
+
 
 @NgModule({
   declarations: [
@@ -27,14 +39,24 @@ import { FormularioComponent } from './pages/formulario/formulario.component';
     AltapeliculaComponent,
     AltaactorComponent,
     ListadopaisesComponent,
-    FormularioComponent
+    FormularioComponent,
+    FormularioPeliculaComponent,
+    ListadoActoresComponent,
+    CrearPeliculaComponent,
+    ActorpeliculaComponent,
+    DetallepaisComponent,
+    DetalleactorComponent,
+    TablapeliculasActorComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
   providers: [ServiciopaisesService],
   bootstrap: [AppComponent]
